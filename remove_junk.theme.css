@@ -1,0 +1,18 @@
+/**
+ * @name Remove Discord Junk
+ * @author Sollace
+ * @version 1.0.1
+ * @description Custom theme to get rid of the garbage UI clitter
+*/
+
+[aria-label="Send a gift"],
+[aria-label="Open GIF picker"],
+[aria-label="Open sticker picker"],
+[aria-label="Apps"],
+[aria-label="Help"],
+[aria-label="Inbox"],
+[aria-label="Servers sidebar"] [class^="listItem_"]:has([aria-label="Download Apps"], [aria-label="Discover"]),
+[class*="browserNotice_"],
+[role="listitem"]:has([data-list-item-id*="__shop"], [data-list-item-id*="__nitro"]) {
+    display: none;
+}

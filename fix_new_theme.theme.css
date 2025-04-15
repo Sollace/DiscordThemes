@@ -1,0 +1,86 @@
+/**
+ * @name Discord Theme Fix
+ * @author Sollace
+ * @version 1.0.1
+ * @description Fixes the stupid decisions of Discord's design team
+*/
+
+* {
+  /* Message background gets darker when hovering over them instead of lighter*/
+  --background-message-hover: rgba(0, 0, 0, 0.05);
+  /* Make chat box shorter and take up less space */
+  --custom-channel-textarea-text-area-height: 45px;
+  /* Remove the appbar (waste of space) */
+  --custom-app-top-bar-height: 0px;
+
+  /* Just in general increase contrast */
+    /* Change tooltips to black */
+    --background-floating: black;
+    /* Add depth by darkening the server list background */
+    --bg-base-tertiary: rgba(0, 0, 0, 0.2) !important;
+    /* Add depth by making context menus darker */
+    --background-surface-higher: #111 !important;
+    /* Add depth by making emoji reactions on messages darker */
+    --background-surface-highest: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Add depth by making player activity on the friends list darken whe hovered */
+  *[class*=interactive] {
+    --background-surface-higher: rgba(0, 0, 0, 0.1) !important;
+  }
+
+/* Remove the application bar (waste of space) */
+  [class^="bar_"][data-windows] {
+    display: none !important;
+  }
+  *[class*="sidebarListRounded"] {
+    /*Remove rounding of the channel list to go with the application bar's removal*/
+    border-radius: 0 !important;
+  }
+
+
+/* Reduce height of the account switcher (waste of space)*/
+  *[aria-label="User area"] {
+    --custom-rtc-account-height: 20px;
+    --space-xs: 2px;
+  }
+
+/* Fix account switcher overlapping the server list */
+  *[aria-label="User area"] {
+    left: 80px !important;
+    width: calc(100% - 90px) !important;
+  }
+  *[aria-label="Servers sidebar"] {
+    margin-bottom: 0 !important;
+    width: 80px !important;
+  }
+
+/* Make server icons larger*/
+  *[aria-label="Servers sidebar"] > ul > * > * {
+    transform-origin: top left;
+    scale: 1.1;
+    padding-top: 10px !important;
+    margin-right: 5px !important;
+    padding-bottom: 150% !important;
+  }
+
+/* Make server icons round */
+  *[class*="folder__"][aria-label] *[class*="guildIcon"],
+  *[class*="blobContainer"] svg img {
+      transition: border-radius 0.75s ease;
+  }
+  *[class*="folder__"][aria-label] *[class*="guildIcon"],
+  *[class*="blobContainer"]:not(*[class*="selected"]) svg img {
+      border-radius: 100% !important;
+  }
+
+/* Make code blocks a darkened version of the regular background (less ugly) */
+  *[class*="markup"] code {
+    --background-code: rgba(0,0,0,0.1);
+    border-radius: 8px;
+  }
+
+/*Add depth by making embeds darker*/
+  *[class*="embedFull"] {
+    --background-surface-high: rgba(0,0,0,0.05);
+  }
