@@ -36,3 +36,4 @@ The "Remove Junk" theme is an optional addon you can install alongside this them
  - "Download Apps" and "Discover" server list buttons
  - "Shop"
  - Nitro upsell button
+ - "Activities" in member list
