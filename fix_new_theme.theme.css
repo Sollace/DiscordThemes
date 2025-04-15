@@ -1,7 +1,7 @@
 /**
  * @name Discord Theme Fix
  * @author Sollace
- * @version 1.0.1
+ * @version 1.0.2
  * @description Fixes the stupid decisions of Discord's design team
 */
 
@@ -18,10 +18,13 @@
     --background-floating: black;
     /* Add depth by darkening the server list background */
     --bg-base-tertiary: rgba(0, 0, 0, 0.2) !important;
-    /* Add depth by making context menus darker */
-    --background-surface-higher: #111 !important;
     /* Add depth by making emoji reactions on messages darker */
     --background-surface-highest: rgba(0, 0, 0, 0.1) !important;
+}
+
+*[class*="layerContainer"] * {
+    /* Add depth by making context menus darker */
+    --background-surface-higher: #111 !important;
 }
 
 /* Add depth by making player activity on the friends list darken whe hovered */
