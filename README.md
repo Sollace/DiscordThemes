@@ -24,6 +24,8 @@ This is a custom theme for Vencord that you can apply on top of the existing dar
 
  - Misc UX improvements
     - Restored bottom of chat buffer
+    - Move chat input back down
+    - Move typing and cooldown indicator back to the top of the chat input
 
 ## Bonus
 
