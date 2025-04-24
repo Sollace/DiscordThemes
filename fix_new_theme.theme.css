@@ -1,7 +1,7 @@
 /**
  * @name Discord Theme Fix
  * @author Sollace
- * @version 1.0.2
+ * @version 1.0.3
  * @description Fixes the stupid decisions of Discord's design team
 */
 
@@ -20,6 +20,11 @@
     --bg-base-tertiary: rgba(0, 0, 0, 0.2) !important;
     /* Add depth by making emoji reactions on messages darker */
     --background-surface-highest: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Remove the oddly-coloured block from the bottom of the server list */
+*[class*="sidebar"]::after {
+    display: none;
 }
 
 *[class*="layerContainer"] * {
@@ -52,10 +57,16 @@
   *[aria-label="User area"] {
     left: 80px !important;
     width: calc(100% - 90px) !important;
+    margin-bottom: 0.5em;
   }
   *[aria-label="Servers sidebar"] {
     margin-bottom: 0 !important;
     width: 80px !important;
+  }
+
+/* Bring back the small gap that indicate you're at the bottom of the chat */
+  *[class*="scrollerSpacer"] {
+    height: 30px !important;
   }
 
 /* Make server icons larger*/
@@ -69,11 +80,13 @@
 
 /* Make server icons round */
   *[class*="folder__"][aria-label] *[class*="guildIcon"],
-  *[class*="blobContainer"] svg img {
+  *[class*="blobContainer"] svg img,
+  *[class*="blobContainer"] svg *[class*="childWrapper"] {
       transition: border-radius 0.75s ease;
   }
-  *[class*="folder__"][aria-label] *[class*="guildIcon"],
-  *[class*="blobContainer"]:not(*[class*="selected"]) svg img {
+  *[class*="folder__"][aria-level] *[class*="guildIcon"],
+  *[class*="blobContainer"]:not(*[class*="selected"]) svg img,
+  *[class*="blobContainer"]:not(*[class*="selected"]) svg *[class*="childWrapper"] {
       border-radius: 100% !important;
   }
 
@@ -87,3 +100,9 @@
   *[class*="embedFull"] {
     --background-surface-high: rgba(0,0,0,0.05);
   }
+
+/* Fix appearance of random things posted in chat bodies (invites, server informationals, etc)*/
+[id*=message-accessories] *[class^="wrapper_"] {
+  background-color: var(--background-secondary);
+  border-radius: 4px;
+}

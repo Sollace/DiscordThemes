@@ -15,12 +15,15 @@ This is a custom theme for Vencord that you can apply on top of the existing dar
     - Changed hover background for messages to a darker colour (rather than lighter)
     - Made tooltips darker
     - Changed code blocks to a neutral colour
-
+    
  - Reducing wasted space
     - Made the text input field slightly shorter
     - Made the User account section slightly shorter, closer to what it was before
     - The user account switcher no longer overlaps the server list
     - Removed the new extra title bar
+
+ - Misc UX improvements
+    - Restored bottom of chat buffer
 
 ## Bonus
 
