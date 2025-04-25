@@ -1,7 +1,7 @@
 /**
  * @name Discord Theme Fix
  * @author Sollace
- * @version 1.0.4
+ * @version 1.0.5
  * @description Fixes the stupid decisions of Discord's design team
 */
 
@@ -20,6 +20,10 @@
     --bg-base-tertiary: rgba(0, 0, 0, 0.2) !important;
     /* Add depth by making emoji reactions on messages darker */
     --background-surface-highest: rgba(0, 0, 0, 0.1) !important;
+
+    /* Fix spoiler color appearing way too bright */
+    --spoiler-hidden-background: var(--background-surface-higher) !important;
+    --spoiler-hidden-background-hover: var(--background-surface-higher) !important;
 }
 
 /* Remove the oddly-coloured block from the bottom of the server list */
@@ -55,7 +59,7 @@
 
 /* Fix account switcher overlapping the server list */
   *[aria-label="User area"] {
-    left: 80px !important;
+    left: calc(80px + 0.25em) !important;
     width: calc(100% - 90px) !important;
     margin-bottom: 0.5em;
   }
