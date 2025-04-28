@@ -42,3 +42,4 @@ The "Remove Junk" theme is an optional addon you can install alongside this them
  - "Shop"
  - Nitro upsell button
  - "Activities" in member list
+ - "Clan" tags
