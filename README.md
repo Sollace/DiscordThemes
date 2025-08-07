@@ -26,6 +26,8 @@ This is a custom theme for Vencord that you can apply on top of the existing dar
     - Restored bottom of chat buffer
     - Move chat input back down
     - Move typing and cooldown indicator back to the top of the chat input
+    - Reverts profile popups to their pre-2025 design
+    - Removed the "Activity" tab from profiles (a neccessary loss to get tab switching working again)
 
 ## Bonus
 
@@ -42,4 +44,3 @@ The "Remove Junk" theme is an optional addon you can install alongside this them
  - "Shop"
  - Nitro upsell button
  - "Activities" in member list
- - "Clan" tags

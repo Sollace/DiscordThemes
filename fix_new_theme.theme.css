@@ -1,7 +1,7 @@
 /**
  * @name Discord Theme Fix
  * @author Sollace
- * @version 1.0.5
+ * @version 1.0.6
  * @description Fixes the stupid decisions of Discord's design team
 */
 
@@ -149,6 +149,15 @@
 .user-profile-modal-v2:not(:has(#activity-tab)) div[class*="profileButtons"] ~ * {
   display: none;
 }
+
+.user-profile-modal-v2 > div > div[class*="profile"] ~ * [aria-label="Activity"] {
+  font-size: 0;
+}
+.user-profile-modal-v2 > div > div[class*="profile"] ~ * [aria-label="Activity"]::before {
+  content: 'Overview';
+  font-size: 16px;
+}
+
 .user-profile-modal-v2 > div > div[class*="profile"] ~ * {
   position: absolute;
   top: 17.5em;
@@ -162,4 +171,18 @@
 .user-profile-modal-v2:has(#activity-tab) > div > div[class*="profile"] ~ * {
   height: 3em;
   bottom: auto;
+}
+/*Corrects banner to new size*/
+.user-profile-modal-v2 div[class*="profileHeader"] > svg {
+    width: 600px !important;
+    margin-top: -50px;
+    min-width: 400px !important;
+}
+.user-profile-modal-v2 div[class*="profileHeader"] > svg > * {
+    mask: radial-gradient(
+        circle at bottom 13px left 62px,
+        transparent 0 45px,
+        white 0px 15px
+    )
+    content-box 0 0 / 100% 100% no-repeat;
 }
