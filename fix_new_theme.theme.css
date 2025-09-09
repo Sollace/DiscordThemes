@@ -1,7 +1,7 @@
 /**
  * @name Discord Theme Fix
  * @author Sollace
- * @version 1.0.7
+ * @version 1.0.8
  * @description Fixes the stupid decisions of Discord's design team
 */
 
@@ -35,6 +35,11 @@
     /* Add depth by making context menus darker */
     --background-surface-higher: #111 !important;
 }
+
+/* Re-apply server list background */
+  *[aria-label="Servers sidebar"] {
+      background: var(--bg-base-tertiary);
+  }
 
 /* Add depth by making player activity on the friends list darken whe hovered */
   *[class*=interactive] {
