@@ -1,7 +1,7 @@
 /**
  * @name Discord Theme Fix
  * @author Sollace
- * @version 1.0.8
+ * @version 1.0.9
  * @description Fixes the stupid decisions of Discord's design team
 */
 
@@ -56,8 +56,8 @@
   }
 
 /* Fix chat box too tall (discord please) */
-  .align-chat-input div[class*="attachWrapper_"] {
-    padding: calc(var(--space-md) - 10px);
+  div[class*="attachWrapper_"] {
+    padding: calc(var(--space-md) - 10px) !important;
   }
 
 /* Reduce height of the account switcher (waste of space)*/
