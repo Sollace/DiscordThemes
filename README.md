@@ -36,6 +36,7 @@ The "Remove Junk" theme is an optional addon you can install alongside this them
 ### Elements removed:
  - Send Gift button
  - GIF Picker button
+ - Add Media button
  - Sticker picker button
  - "Apps" button
  - Help button
@@ -44,3 +45,4 @@ The "Remove Junk" theme is an optional addon you can install alongside this them
  - "Shop"
  - Nitro upsell button
  - "Activities" in member list
+ - "Wishlist" in profile popups
