@@ -1,7 +1,7 @@
 /**
  * @name Discord Theme Fix
  * @author Sollace
- * @version 1.0.9
+ * @version 1.0.10
  * @description Fixes the stupid decisions of Discord's design team
 */
 
@@ -60,24 +60,39 @@
     padding: calc(var(--space-md) - 10px) !important;
   }
 
-/* Reduce height of the account switcher (waste of space)*/
   *[aria-label="User area"] {
-    --custom-rtc-account-height: 20px;
-    --space-xs: 2px;
-  }
-  *[aria-label="User area"] > div[class*="container_"] {
-    height: 43px !important;
-  }
-
-/* Fix account switcher overlapping the server list */
-  *[aria-label="User area"] {
+    /* Fix account switcher overlapping the server list */
     left: calc(80px + 0.25em) !important;
     width: calc(100% - 90px) !important;
     margin-bottom: 0.5em;
+
+    /* Reduce height of the account switcher (waste of space)*/
+    --custom-rtc-account-height: 20px;
+    --space-xs: 2px;
+
+    & > div[class*="container_"] {
+      height: 43px !important;
+      padding: 4px !important;
+
+      & > div[class*="avatarWrapper_"] {
+        margin-left: 0 !important;
+        padding-left: 4px !important;
+      }
+    }
   }
+
   *[aria-label="Servers sidebar"] {
     margin-bottom: 0 !important;
     width: 80px !important;
+
+    /* Make server icons larger*/
+    & > ul > * > * {
+      transform-origin: top left;
+      scale: 1.1;
+      padding-top: 10px !important;
+      margin-right: 5px !important;
+      padding-bottom: 150% !important;
+    }
   }
 
 /* Bring back the small gap that indicate you're at the bottom of the chat */
@@ -85,14 +100,6 @@
     height: 30px !important;
   }
 
-/* Make server icons larger*/
-  *[aria-label="Servers sidebar"] > ul > * > * {
-    transform-origin: top left;
-    scale: 1.1;
-    padding-top: 10px !important;
-    margin-right: 5px !important;
-    padding-bottom: 150% !important;
-  }
 
 /* Make server icons round */
   *[class*="folder__"][aria-label] *[class*="guildIcon"],
