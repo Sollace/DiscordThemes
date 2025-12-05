@@ -143,65 +143,77 @@
 .user-profile-modal-v2 {
   width: min-content;
   min-width: 0;
-}
-.user-profile-modal-v2 > div {
-  padding: 0 !important;
-  gap: 0 !important;
-  overflow-y: auto;
-  scrollbar-width: thin;
-}
-.user-profile-modal-v2 #activity-tab,
-.user-profile-modal-v2 > div > div[class*="backgroundImage"] {
-  display: none !important;
-}
-.user-profile-modal-v2 > div > div[class*="profile"] {
-  width: 600px;
-}
-.user-profile-modal-v2 div[class*="profileButtons"] {
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-.user-profile-modal-v2 div[class*="profileButtons"] + * {
-  margin-top: 3em;
-}
-.user-profile-modal-v2:not(:has(#activity-tab)) div[class*="profileButtons"] ~ * {
-  display: none;
-}
 
-.user-profile-modal-v2 > div > div[class*="profile"] ~ * [aria-label="Activity"] {
-  font-size: 0;
-}
-.user-profile-modal-v2 > div > div[class*="profile"] ~ * [aria-label="Activity"]::before {
-  content: 'Overview';
-  font-size: 16px;
-}
+  & > div {
+    padding: 0 !important;
+    gap: 0 !important;
+    overflow-y: auto;
+    scrollbar-width: thin;
+  }
+  #activity-tab,
+  #widgets-tab,
+  [aria-label="Activity"],
+  & > div > div[class*="backgroundImage"] {
+    display: none !important;
+  }
 
-.user-profile-modal-v2 > div > div[class*="profile"] ~ * {
-  position: absolute;
-  top: 17.5em;
-  left: 2em;
-  right: 2em;
-  bottom: 2em;
-  width: auto !important;
-  height: auto !important;
-  border-radius: 0.3em;
-}
-.user-profile-modal-v2:has(#activity-tab) > div > div[class*="profile"] ~ * {
-  height: 3em;
-  bottom: auto;
-}
-/*Corrects banner to new size*/
-.user-profile-modal-v2 div[class*="profileHeader"] > svg {
-    width: 600px !important;
-    margin-top: -50px;
-    min-width: 400px !important;
-}
-.user-profile-modal-v2 div[class*="profileHeader"] > svg > * {
-    mask: radial-gradient(
-        circle at bottom 13px left 62px,
-        transparent 0 45px,
-        white 0px 15px
-    )
-    content-box 0 0 / 100% 100% no-repeat;
+  div[class*="profileButtons"] {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    & + * {
+      margin-top: 3em;
+    }
+  }
+
+  & > div > div[class*="profile"] {
+    width: 600px;
+
+    & ~ * {
+      position: absolute;
+      top: 17.5em;
+      left: 2em;
+      right: 2em;
+      bottom: 2em;
+      width: auto !important;
+      height: auto !important;
+      border-radius: 0.3em;
+
+      [aria-label="Board"] {
+        font-size: 0;
+      }
+      [aria-label="Board"]::before {
+        content: 'Overview';
+        font-size: 16px;
+      }
+    }
+  }
+
+  &:not(:has(#activity-tab, #widgets-tab)) div[class*="profileButtons"] ~ * {
+    display: none;
+  }
+
+  &:has(#activity-tab, #widgets-tab) > div > div[class*="profile"] ~ * {
+    height: 3em;
+    bottom: auto;
+  }
+
+  /*Corrects banner to new size*/
+  div[class*="profileHeader"] {
+    & > svg {
+        width: 600px !important;
+        margin-top: -50px;
+        min-width: 400px !important;
+
+        & > * {
+          mask: radial-gradient(
+              circle at bottom 13px left 62px,
+              transparent 0 45px,
+              white 0px 15px
+          )
+          content-box 0 0 / 100% 100% no-repeat;
+      }
+    }
+  }
 }
