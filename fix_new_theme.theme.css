@@ -60,7 +60,7 @@
     padding: calc(var(--space-md) - 10px) !important;
   }
 
-  *[aria-label="User area"] {
+  *[aria-label="User status and settings"] {
     /* Fix account switcher overlapping the server list */
     left: calc(80px + 0.25em) !important;
     width: calc(100% - 90px) !important;
