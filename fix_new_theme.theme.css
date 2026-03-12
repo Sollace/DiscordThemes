@@ -1,7 +1,7 @@
 /**
  * @name Discord Theme Fix
  * @author Sollace
- * @version 1.0.11
+ * @version 1.0.12
  * @description Fixes the stupid decisions of Discord's design team
 */
 
@@ -142,7 +142,7 @@
 /* Revert profile designs */
 .user-profile-modal-v2 {
   width: min-content;
-  min-width: 0;
+  min-width: 600px;
 
   & > div {
     padding: 0 !important;
@@ -152,23 +152,34 @@
   }
   #activity-tab,
   #widgets-tab,
-  [aria-label="Activity"],
-  & > div > div[class*="backgroundImage"] {
+  [aria-label="Activity"]:not(:first-child),
+  & > div > [class*="backgroundImage"] {
     display: none !important;
   }
 
-  div[class*="profileButtons"] {
-    position: absolute;
-    top: 0;
-    right: 0;
-
-    & + * {
-      margin-top: 3em;
-    }
+  & [class^="closeButton_"] {
+    z-index: 100;
   }
 
-  & > div > div[class*="profile"] {
+  & [class^="profile_"] {
     width: 600px;
+    max-width: 600px;
+
+    [class*="profileBody"] {
+      margin-top: 7em;
+
+      & > [class*="container"] {
+        position: fixed;
+        top: 13em;
+        width: 100%;
+      }
+    }
+
+    [class*="profileButtons"] {
+      position: fixed;
+      top: 11em;
+      right: 1em;
+    }
 
     & ~ * {
       position: absolute;
@@ -180,21 +191,27 @@
       height: auto !important;
       border-radius: 0.3em;
 
+      [aria-label="Activity"],
       [aria-label="Board"] {
         font-size: 0;
       }
+      [aria-label="Activity"]::before,
       [aria-label="Board"]::before {
         content: 'Overview';
         font-size: 16px;
       }
+
+      [class*="tabListScroller"], [class*="tabBarPanel"] {
+        padding-inline: 0;
+      }
     }
   }
 
-  &:not(:has(#activity-tab, #widgets-tab)) div[class*="profileButtons"] ~ * {
+  &:not(:has(#activity-tab, #widgets-tab)) [class*="profileButtons"] ~ * {
     display: none;
   }
 
-  &:has(#activity-tab, #widgets-tab) > div > div[class*="profile"] ~ * {
+  &:has(#activity-tab, #widgets-tab) > div > [class*="profile"] ~ * {
     height: 3em;
     bottom: auto;
   }
