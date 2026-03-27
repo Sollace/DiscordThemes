@@ -1,7 +1,7 @@
 /**
  * @name Discord Theme Fix
  * @author Sollace
- * @version 1.0.12
+ * @version 1.0.13
  * @description Fixes the stupid decisions of Discord's design team
 */
 
@@ -25,15 +25,19 @@
     --spoiler-hidden-background: var(--background-surface-higher) !important;
     --spoiler-hidden-background-hover: var(--background-surface-higher) !important;
 }
+div[role="dialog"][aria-modal="true"] * {
+  --background-surface-highest: var(--background-base-lowest) !important;
+}
 
 /* Remove the oddly-coloured block from the bottom of the server list */
-*[class*="sidebar"]::after {
+[class*="sidebar"]::after {
     display: none;
 }
 
-*[class*="layerContainer"] * {
-    /* Add depth by making context menus darker */
-    --background-surface-higher: #111 !important;
+/* Add depth by making context menus darker */
+[data-popover-layer] *, [class*="guildTooltipWrapper"] * {
+    --background-surface-higher: #111e !important;
+    --background-surface-high: #111c !important;
 }
 
 /* Re-apply server list background */
@@ -95,12 +99,6 @@
     }
   }
 
-/* Bring back the small gap that indicate you're at the bottom of the chat */
-  *[class*="scrollerSpacer"] {
-    height: 30px !important;
-  }
-
-
 /* Make server icons round */
   *[class*="folder"][aria-label] *[class*="guildIcon"],
   *[class*="blobContainer"] svg img,
@@ -140,6 +138,10 @@
   }
 
 /* Revert profile designs */
+div[class*="layoutContainer"]:has(.user-profile-modal-v2) {
+  width: min-content;
+}
+
 .user-profile-modal-v2 {
   width: min-content;
   min-width: 600px;
@@ -164,6 +166,7 @@
   & [class^="profile_"] {
     width: 600px;
     max-width: 600px;
+    border-radius: inherit;
 
     [class*="profileBody"] {
       margin-top: 7em;
