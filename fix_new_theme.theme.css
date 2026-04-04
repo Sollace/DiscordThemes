@@ -1,7 +1,7 @@
 /**
  * @name Discord Theme Fix
  * @author Sollace
- * @version 1.0.13
+ * @version 1.0.14
  * @description Fixes the stupid decisions of Discord's design team
 */
 
@@ -51,7 +51,7 @@ div[role="dialog"][aria-modal="true"] * {
   }
 
 /* Remove the application bar (waste of space) */
-  [class*="base"] > [class*="-bar"] {
+  [class*="base"] > [class^="bar"] {
     display: none !important;
   }
   *[class*="sidebarListRounded"] {
