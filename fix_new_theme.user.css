@@ -1,0 +1,252 @@
+/* ==UserStyle==
+@name           Discord Theme Fix
+@namespace      github.com/openstyles/stylus
+@version        1.0.14
+@description    Fixes the stupid decisions of Discord's design team
+@author         Sollace
+@updateURL      https://raw.githubusercontent.com/Sollace/DiscordThemes/refs/heads/master/fix_new_theme.theme.css
+==/UserStyle== */
+
+@-moz-document url-prefix("https://discord.com") {
+/**
+ * @name Discord Theme Fix
+ * @author Sollace
+ * @version 1.0.14
+ * @description Fixes the stupid decisions of Discord's design team
+*/
+
+* {
+  /* Message background gets darker when hovering over them instead of lighter*/
+  --background-message-hover: rgba(0, 0, 0, 0.05);
+  /* Make chat box shorter and take up less space */
+  --custom-channel-textarea-text-area-height: 45px;
+  /* Remove the appbar (waste of space) */
+  --custom-app-top-bar-height: 0px;
+
+  /* Just in general increase contrast */
+    /* Change tooltips to black */
+    --background-floating: black;
+    /* Add depth by darkening the server list background */
+    --bg-base-tertiary: rgba(0, 0, 0, 0.2) !important;
+    /* Add depth by making emoji reactions on messages darker */
+    --background-surface-highest: rgba(0, 0, 0, 0.1) !important;
+
+    /* Fix spoiler color appearing way too bright */
+    --spoiler-hidden-background: var(--background-surface-higher) !important;
+    --spoiler-hidden-background-hover: var(--background-surface-higher) !important;
+}
+div[role="dialog"][aria-modal="true"] * {
+  --background-surface-highest: var(--background-base-lowest) !important;
+}
+
+/* Remove the oddly-coloured block from the bottom of the server list */
+[class*="sidebar"]::after {
+    display: none;
+}
+
+/* Add depth by making context menus darker */
+[data-popover-layer] *, [class*="guildTooltipWrapper"] * {
+    --background-surface-higher: #111e !important;
+    --background-surface-high: #111c !important;
+}
+
+/* Re-apply server list background */
+  *[aria-label="Servers sidebar"] {
+      background: var(--bg-base-tertiary);
+  }
+
+/* Add depth by making player activity on the friends list darken whe hovered */
+  *[class*=interactive] {
+    --background-surface-higher: rgba(0, 0, 0, 0.1) !important;
+  }
+
+/* Remove the application bar (waste of space) */
+  [class*="base"] > [class^="bar"] {
+    display: none !important;
+  }
+  *[class*="sidebarListRounded"] {
+    /*Remove rounding of the channel list to go with the application bar's removal*/
+    border-radius: 0 !important;
+  }
+
+/* Fix chat box too tall (discord please) */
+  div[class*="attachWrapper"] {
+    padding: calc(var(--space-md) - 10px) !important;
+  }
+
+  *[aria-label="User status and settings"] {
+    /* Fix account switcher overlapping the server list */
+    left: calc(80px + 0.25em) !important;
+    width: calc(100% - 90px) !important;
+    margin-bottom: 0.5em;
+
+    /* Reduce height of the account switcher (waste of space)*/
+    --custom-rtc-account-height: 20px;
+    --space-xs: 2px;
+
+    & > div[class*="container"] {
+      height: 43px !important;
+      padding: 4px !important;
+
+      & > div[class*="avatarWrapper"] {
+        margin-left: 0 !important;
+        padding-left: 4px !important;
+      }
+    }
+  }
+
+  *[aria-label="Servers sidebar"] {
+    margin-bottom: 0 !important;
+    width: 80px !important;
+
+    /* Make server icons larger*/
+    & > ul > * > * {
+      transform-origin: top left;
+      scale: 1.1;
+      padding-top: 10px !important;
+      margin-right: 5px !important;
+      padding-bottom: 150% !important;
+    }
+  }
+
+/* Make server icons round */
+  *[class*="folder"][aria-label] *[class*="guildIcon"],
+  *[class*="blobContainer"] svg img,
+  *[class*="blobContainer"] svg *[class*="childWrapper"] {
+      transition: border-radius 0.75s ease;
+  }
+  *[class*="folder"][aria-level] *[class*="guildIcon"],
+  *[class*="blobContainer"]:not(*[class*="selected"]) svg img,
+  *[class*="blobContainer"]:not(*[class*="selected"]) svg *[class*="childWrapper"] {
+      border-radius: 100% !important;
+  }
+
+/* Make code blocks a darkened version of the regular background (less ugly) */
+  *[class*="markup"] code {
+    --background-code: rgba(0,0,0,0.1);
+    border-radius: 8px;
+  }
+
+/*Add depth by making embeds darker*/
+  *[class*="embedFull"] {
+    --background-surface-high: rgba(0,0,0,0.05);
+  }
+
+/* Fix appearance of random things posted in chat bodies (invites, server informationals, etc)*/
+  [id*=message-accessories] *[class^="wrapper"] {
+    background-color: var(--background-secondary);
+    border-radius: 4px;
+  }
+
+/* Move typing and cooldown indicators back to the top of the chat input */
+  [class*="formWithLoadedChatInput"] [class*="typing"] {
+    bottom: 100%;
+  }
+/* Align chat input with other UI elements */
+  * {
+      --custom-chat-input-margin-bottom: 8px;
+  }
+
+/* Revert profile designs */
+div[class*="layoutContainer"]:has(.user-profile-modal-v2) {
+  width: min-content;
+}
+
+.user-profile-modal-v2 {
+  width: min-content;
+  min-width: 600px;
+
+  & > div {
+    padding: 0 !important;
+    gap: 0 !important;
+    overflow-y: auto;
+    scrollbar-width: thin;
+  }
+  #activity-tab,
+  #widgets-tab,
+  [aria-label="Activity"]:not(:first-child),
+  & > div > [class*="backgroundImage"] {
+    display: none !important;
+  }
+
+  & [class^="closeButton_"] {
+    z-index: 100;
+  }
+
+  & [class^="profile_"] {
+    width: 600px;
+    max-width: 600px;
+    border-radius: inherit;
+
+    [class*="profileBody"] {
+      margin-top: 7em;
+
+      & > [class*="container"] {
+        position: fixed;
+        top: 13em;
+        width: 100%;
+      }
+    }
+
+    [class*="profileButtons"] {
+      position: fixed;
+      top: 11em;
+      right: 1em;
+    }
+
+    & ~ * {
+      position: absolute;
+      top: 17.5em;
+      left: 2em;
+      right: 2em;
+      bottom: 2em;
+      width: auto !important;
+      height: auto !important;
+      border-radius: 0.3em;
+
+      [aria-label="Activity"],
+      [aria-label="Board"] {
+        font-size: 0;
+      }
+      [aria-label="Activity"]::before,
+      [aria-label="Board"]::before {
+        content: 'Overview';
+        font-size: 16px;
+      }
+
+      [class*="tabListScroller"], [class*="tabBarPanel"] {
+        padding-inline: 0;
+      }
+    }
+  }
+
+  &:not(:has(#activity-tab, #widgets-tab)) [class*="profileButtons"] ~ * {
+    display: none;
+  }
+
+  &:has(#activity-tab, #widgets-tab) > div > [class*="profile"] ~ * {
+    height: 3em;
+    bottom: auto;
+  }
+
+  /*Corrects banner to new size*/
+  div[class*="profileHeader"] {
+    & > svg {
+        width: 600px !important;
+        margin-top: -50px;
+        min-width: 400px !important;
+
+        & > * {
+          mask: radial-gradient(
+              circle at bottom 13px left 62px,
+              transparent 0 45px,
+              white 0px 15px
+          )
+          content-box 0 0 / 100% 100% no-repeat;
+      }
+    }
+  }
+}
+
+
+}

@@ -1,0 +1,41 @@
+/* ==UserStyle==
+@name           Remove Discord Junk
+@namespace      github.com/openstyles/stylus
+@version        1.0.7
+@description    Custom theme to get rid of the garbage UI clitter
+@author         Sollace
+@updateURL      https://raw.githubusercontent.com/Sollace/DiscordThemes/refs/heads/master/remove_junk.user.css
+==/UserStyle== */
+
+@-moz-document url-prefix("https://discord.com") {
+/**
+ * @name Remove Discord Junk
+ * @author Sollace
+ * @version 1.0.7
+ * @description Custom theme to get rid of the garbage UI clitter
+*/
+
+[aria-label*="Gift"], [aria-label*="gift"],
+[aria-label="Open GIF picker"],
+[aria-label="Add Media"],
+[aria-label="Add Media"] ~ [class*=spacer],
+[aria-label="Open sticker picker"],
+[aria-label="Apps"],
+[aria-label="Wishlist"],
+[aria-label="Help"],
+[aria-label="Inbox"],
+[aria-label="Servers sidebar"] [class^="listItem_"]:has([aria-label="Download Apps"], [aria-label="Discover"]),
+.user-profile-modal-v2 [aria-label="Shop"],
+[class*="browserNotice_"],
+[role="listitem"]:has([data-list-item-id*="__shop"], [data-list-item-id*="__nitro"], a[href^="/quest"]),
+/* Remove the "Quests have moved!" message */
+div[style*="quests-wumpus-hikes-mountain-transparent-background"],
+/* Remove activities */
+[class*=members] [class*="membersGroup"]:has([class*="toggleExpandIcon"], [role="button"] svg),
+[class*=members] [class*="membersGroup"]:has([class*="toggleExpandIcon"], [role="button"] svg) ~ div:has([class*=infoSection])/*,
+[class*="clanTagChiplet"]*/ {
+    display: none;
+}
+
+
+}
