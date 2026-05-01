@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Discord Theme Fix
 @namespace      github.com/openstyles/stylus
-@version        1.0.14
+@version        1.0.15
 @description    Fixes the stupid decisions of Discord's design team
 @author         Sollace
 @updateURL      https://raw.githubusercontent.com/Sollace/DiscordThemes/refs/heads/master/fix_new_theme.user.css
@@ -11,9 +11,10 @@
 /**
  * @name Discord Theme Fix
  * @author Sollace
- * @version 1.0.14
+ * @version 1.0.15
  * @description Fixes the stupid decisions of Discord's design team
 */
+
 
 * {
   /* Message background gets darker when hovering over them instead of lighter*/
@@ -173,15 +174,19 @@ div[class*="layoutContainer"]:has(.user-profile-modal-v2) {
     z-index: 100;
   }
 
-  & [class^="profile_"] {
-    width: 600px;
-    max-width: 600px;
+  & [class^="profileCard_"] {
     border-radius: inherit;
+
+    [class^="profile_"] {
+      width: 600px;
+      max-width: 600px;
+      border-radius: inherit;
+    }
 
     [class*="profileBody"] {
       margin-top: 7em;
 
-      & > [class*="container"] {
+      & > div:first-child {
         position: fixed;
         top: 13em;
         width: 100%;
@@ -196,7 +201,7 @@ div[class*="layoutContainer"]:has(.user-profile-modal-v2) {
 
     & ~ * {
       position: absolute;
-      top: 17.5em;
+      top: 16em;
       left: 2em;
       right: 2em;
       bottom: 2em;
@@ -216,6 +221,8 @@ div[class*="layoutContainer"]:has(.user-profile-modal-v2) {
 
       [class*="tabListScroller"], [class*="tabBarPanel"] {
         padding-inline: 0;
+        margin: 0;
+        margin-block-end: 0.25em;
       }
     }
   }
@@ -247,6 +254,7 @@ div[class*="layoutContainer"]:has(.user-profile-modal-v2) {
     }
   }
 }
+
 
 
 }
