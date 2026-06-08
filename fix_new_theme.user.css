@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Discord Theme Fix
 @namespace      github.com/openstyles/stylus
-@version        1.0.15
+@version        1.0.16
 @description    Fixes the stupid decisions of Discord's design team
 @author         Sollace
 @updateURL      https://raw.githubusercontent.com/Sollace/DiscordThemes/refs/heads/master/fix_new_theme.user.css
@@ -11,7 +11,7 @@
 /**
  * @name Discord Theme Fix
  * @author Sollace
- * @version 1.0.15
+ * @version 1.0.16
  * @description Fixes the stupid decisions of Discord's design team
 */
 
@@ -174,17 +174,51 @@ div[class*="layoutContainer"]:has(.user-profile-modal-v2) {
     z-index: 100;
   }
 
-  & [class^="profileCard_"] {
+  & [class^="profileContentColumns_"] {
     border-radius: inherit;
 
     [class^="profile_"] {
       width: 600px;
       max-width: 600px;
       border-radius: inherit;
+
+      & ~ [class*="container"] {
+        position: absolute;
+        top: 16em;
+        left: 2em;
+        right: 2em;
+        bottom: 2em;
+        width: auto !important;
+        height: auto !important;
+        border-radius: 0.3em;
+
+        & > div > [class*="profile"] ~ * {
+          height: 3em;
+          bottom: auto;
+        }
+
+        [aria-label="Activity"],
+        [aria-label="Board"] {
+          font-size: 0;
+        }
+        [aria-label="Activity"]::before,
+        [aria-label="Board"]::before {
+          content: 'Overview';
+          font-size: 16px;
+        }
+
+        [class*="tabListScroller"], [class*="tabBarPanel"] {
+          z-index: 10;
+          padding-inline: 0;
+          margin: 0;
+          margin-block-end: 0.25em;
+        }
+      }
     }
 
     [class*="profileBody"] {
       margin-top: 7em;
+      z-index: 1;
 
       & > div:first-child {
         position: fixed;
@@ -198,59 +232,25 @@ div[class*="layoutContainer"]:has(.user-profile-modal-v2) {
       top: 11em;
       right: 1em;
     }
-
-    & ~ * {
-      position: absolute;
-      top: 16em;
-      left: 2em;
-      right: 2em;
-      bottom: 2em;
-      width: auto !important;
-      height: auto !important;
-      border-radius: 0.3em;
-
-      [aria-label="Activity"],
-      [aria-label="Board"] {
-        font-size: 0;
-      }
-      [aria-label="Activity"]::before,
-      [aria-label="Board"]::before {
-        content: 'Overview';
-        font-size: 16px;
-      }
-
-      [class*="tabListScroller"], [class*="tabBarPanel"] {
-        padding-inline: 0;
-        margin: 0;
-        margin-block-end: 0.25em;
-      }
-    }
   }
 
   &:not(:has(#activity-tab, #widgets-tab)) [class*="profileButtons"] ~ * {
     display: none;
   }
 
-  &:has(#activity-tab, #widgets-tab) > div > [class*="profile"] ~ * {
-    height: 3em;
-    bottom: auto;
-  }
-
   /*Corrects banner to new size*/
-  div[class*="profileHeader"] {
-    & > svg {
-        width: 600px !important;
-        margin-top: -50px;
-        min-width: 400px !important;
+  [class*="profileHeader"] > svg {
+      width: 600px !important;
+      margin-top: -50px;
+      min-width: 400px !important;
 
-        & > * {
-          mask: radial-gradient(
-              circle at bottom 13px left 62px,
-              transparent 0 45px,
-              white 0px 15px
-          )
-          content-box 0 0 / 100% 100% no-repeat;
-      }
+      & > * {
+        mask: radial-gradient(
+            circle at bottom 13px left 62px,
+            transparent 0 45px,
+            white 0px 15px
+        )
+        content-box 0 0 / 100% 100% no-repeat;
     }
   }
 }
