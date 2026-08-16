@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Remove Discord Junk
 @namespace      github.com/openstyles/stylus
-@version        1.0.7
+@version        1.0.8
 @description    Custom theme to get rid of the garbage UI clitter
 @author         Sollace
 @updateURL      https://raw.githubusercontent.com/Sollace/DiscordThemes/refs/heads/master/remove_junk.user.css
@@ -11,7 +11,7 @@
 /**
  * @name Remove Discord Junk
  * @author Sollace
- * @version 1.0.7
+ * @version 1.0.8
  * @description Custom theme to get rid of the garbage UI clitter
 */
 
@@ -24,6 +24,7 @@
 [aria-label="Wishlist"],
 [aria-label="Help"],
 [aria-label="Inbox"],
+[id^="popout"]:has([aria-label="Close"]), /* Popup Annoyances */
 [aria-label="Servers sidebar"] [class^="listItem_"]:has([aria-label="Download Apps"], [aria-label="Discover"]),
 .user-profile-modal-v2 [aria-label="Shop"],
 [class*="browserNotice_"],

@@ -47,3 +47,4 @@ The "Remove Junk" theme is an optional addon you can install alongside this them
  - Nitro upsell button
  - "Activities" in member list
  - "Wishlist" in profile popups
+ - "X feature exists!"/"ORBS ORBS ORBS!" and other ad annoyance popups
